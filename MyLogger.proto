@@ -4,9 +4,10 @@ import "google/protobuf/empty.proto";
 package my_logger;
 
 message LogEvent{
-    int64 Timestamp = 1;
-    string Message = 2;
-    repeated LogEventContext Ctx = 3;
+    string TenantId = 1;
+    int64 Timestamp = 2;
+    string Message = 3;
+    repeated LogEventContext Ctx = 4;
 }
 
 message LogEventContext{
