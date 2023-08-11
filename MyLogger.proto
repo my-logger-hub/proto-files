@@ -1,0 +1,18 @@
+
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package my_logger;
+
+message LogEvent{
+    int64 Timestamp = 1;
+    string Message = 2;
+    repeated LogEventContext Ctx = 3;
+}
+
+message LogEventContext{
+    string Key = 1;
+    string Value = 2;
+}
+service MyLogger {
+    rpc Write(stream LogEvent) returns (google.protobuf.Empty);
+ }
