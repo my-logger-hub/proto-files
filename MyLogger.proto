@@ -16,4 +16,5 @@ message LogEventContext{
 }
 service MyLogger {
     rpc Write(stream LogEvent) returns (google.protobuf.Empty);
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
  }
