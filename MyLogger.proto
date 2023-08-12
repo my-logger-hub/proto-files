@@ -23,7 +23,33 @@ message LogEventContext{
     string Key = 1;
     string Value = 2;
 }
+
+message ReadLogEventRequest{
+    string TenantId = 1;
+    int64 FromTime =2;
+    int64 ToTime =3;
+    repeated LogLevel Levels = 4;
+    repeated string ContextKeys = 5;
+}
+
+message GetStatisticRequest{
+    string TenantId = 1;
+    int64 FromTime =2;
+    int64 ToTime =3;
+}
+
+message StatisticData{
+    int32 InfoCount = 1;
+    int32 WarningCount = 2;
+    int32 ErrorCount = 3;
+    int32 FatalCount = 4;
+    int32 DebugCount = 5;
+}
+
+
 service MyLogger {
     rpc Write(stream LogEvent) returns (google.protobuf.Empty);
+    rpc Read(ReadLogEventRequest) returns (stream LogEvent);
+    rpc GetStatistic(ReadLogEventRequest) returns (StatisticData);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
  }
