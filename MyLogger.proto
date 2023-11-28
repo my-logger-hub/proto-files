@@ -58,7 +58,7 @@ message StatisticData{
 
 service MyLogger {
     rpc Write(stream LogEventGrpcModel) returns (google.protobuf.Empty);
-    rpc Read(GetStatisticsRequest) returns (stream LogEventGrpcModel);
-    rpc GetStatistic(ReadLogEventRequest) returns (StatisticData);
+    rpc Read(ReadLogEventRequest) returns (stream LogEventGrpcModel);
+    rpc GetStatistic(GetStatisticsRequest) returns (StatisticData);
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
  }
